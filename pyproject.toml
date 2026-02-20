@@ -1,0 +1,22 @@
+[project]
+name = "fluxbalancer-contracts"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "domster704",email = "domster704@mail.ru"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "grpcio (>=1.78.1,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "grpcio-tools (>=1.78.1,<2.0.0)"
+]

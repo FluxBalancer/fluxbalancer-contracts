@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package metrics;
+
+message Ack {
+    bool ok = 1;
+}
+
+message NodeMetrics {
+    string node_id = 1;
+    double cpu_util = 2;
+    double mem_util = 3;
+    double net_in_bytes = 4;
+    double net_out_bytes = 5;
+    double latency_ms = 6;
+}
+
+service MetricsService {
+    rpc PushMetrics (NodeMetrics) returns (Ack);
+}
