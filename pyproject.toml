@@ -11,6 +11,10 @@ dependencies = [
     "grpcio (>=1.78.1,<2.0.0)"
 ]
 
+[tool.poetry]
+packages = [
+    { include = "contracts", from = "src"}
+]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
