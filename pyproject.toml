@@ -3,17 +3,18 @@ name = "fluxbalancer-contracts"
 version = "0.1.2"
 description = ""
 authors = [
-    {name = "domster704",email = "domster704@mail.ru"}
+    { name = "domster704", email = "domster704@mail.ru" }
 ]
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "grpcio (>=1.78.1,<2.0.0)"
-]
+
+[tool.poetry.dependencies]
+python = ">=3.12"
+grpcio = ">=1.78.1,<2.0.0"
+protobuf = ">=6.33.5,<7.0.0"
 
 [tool.poetry]
 packages = [
-    { include = "contracts", from = "src"}
+    { include = "contracts", from = "src" }
 ]
 
 [build-system]
