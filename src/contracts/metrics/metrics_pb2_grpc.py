@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import metrics_pb2 as metrics__pb2
+from contracts.metrics import metrics_pb2 as contracts_dot_metrics_dot_metrics__pb2
 
 GRPC_GENERATED_VERSION = '1.78.1'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in metrics_pb2_grpc.py depends on'
+        + ' but the generated code in contracts/metrics/metrics_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,8 +36,8 @@ class MetricsServiceStub(object):
         """
         self.PushMetrics = channel.unary_unary(
                 '/metrics.MetricsService/PushMetrics',
-                request_serializer=metrics__pb2.NodeMetrics.SerializeToString,
-                response_deserializer=metrics__pb2.Ack.FromString,
+                request_serializer=contracts_dot_metrics_dot_metrics__pb2.NodeMetrics.SerializeToString,
+                response_deserializer=contracts_dot_metrics_dot_metrics__pb2.Ack.FromString,
                 _registered_method=True)
 
 
@@ -55,8 +55,8 @@ def add_MetricsServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'PushMetrics': grpc.unary_unary_rpc_method_handler(
                     servicer.PushMetrics,
-                    request_deserializer=metrics__pb2.NodeMetrics.FromString,
-                    response_serializer=metrics__pb2.Ack.SerializeToString,
+                    request_deserializer=contracts_dot_metrics_dot_metrics__pb2.NodeMetrics.FromString,
+                    response_serializer=contracts_dot_metrics_dot_metrics__pb2.Ack.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -84,8 +84,8 @@ class MetricsService(object):
             request,
             target,
             '/metrics.MetricsService/PushMetrics',
-            metrics__pb2.NodeMetrics.SerializeToString,
-            metrics__pb2.Ack.FromString,
+            contracts_dot_metrics_dot_metrics__pb2.NodeMetrics.SerializeToString,
+            contracts_dot_metrics_dot_metrics__pb2.Ack.FromString,
             options,
             channel_credentials,
             insecure,
