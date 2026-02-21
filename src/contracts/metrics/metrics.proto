@@ -21,10 +21,6 @@ message NodeMetrics {
     double latency_ms = 9;
 }
 
-message NodeMetricsBatch {
-    repeated NodeMetrics items = 1;
-}
-
 service MetricsService {
-    rpc PushMetrics (NodeMetricsBatch) returns (Ack);
+    rpc PushMetrics (NodeMetrics) returns (Ack);
 }
