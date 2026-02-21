@@ -36,7 +36,7 @@ class MetricsServiceStub(object):
         """
         self.PushMetrics = channel.unary_unary(
                 '/metrics.MetricsService/PushMetrics',
-                request_serializer=metrics__pb2.NodeMetrics.SerializeToString,
+                request_serializer=metrics__pb2.NodeMetricsBatch.SerializeToString,
                 response_deserializer=metrics__pb2.Ack.FromString,
                 _registered_method=True)
 
@@ -55,7 +55,7 @@ def add_MetricsServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'PushMetrics': grpc.unary_unary_rpc_method_handler(
                     servicer.PushMetrics,
-                    request_deserializer=metrics__pb2.NodeMetrics.FromString,
+                    request_deserializer=metrics__pb2.NodeMetricsBatch.FromString,
                     response_serializer=metrics__pb2.Ack.SerializeToString,
             ),
     }
@@ -84,7 +84,7 @@ class MetricsService(object):
             request,
             target,
             '/metrics.MetricsService/PushMetrics',
-            metrics__pb2.NodeMetrics.SerializeToString,
+            metrics__pb2.NodeMetricsBatch.SerializeToString,
             metrics__pb2.Ack.FromString,
             options,
             channel_credentials,

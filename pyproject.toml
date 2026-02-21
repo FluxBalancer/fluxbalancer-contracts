@@ -1,6 +1,6 @@
 [project]
 name = "fluxbalancer-contracts"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = [
     {name = "domster704",email = "domster704@mail.ru"}

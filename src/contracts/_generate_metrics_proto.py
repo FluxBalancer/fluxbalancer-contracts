@@ -1,9 +1,18 @@
-import os
+import subprocess
+from pathlib import Path
 
-os.system("""
-python -m grpc_tools.protoc \
-  -I metrics \
-  --python_out=metrics \
-  --grpc_python_out=metrics \
-  ./metrics/metrics.proto
-""")
+ROOT = Path(__file__).resolve().parents[2]
+PROTO_DIR = ROOT / "src" / "contracts" / "metrics"
+PROTO = PROTO_DIR / "metrics.proto"
+
+subprocess.check_call(
+    [
+        "python",
+        "-m",
+        "grpc_tools.protoc",
+        f"-I{PROTO_DIR}",
+        f"--python_out={PROTO_DIR}",
+        f"--grpc_python_out={PROTO_DIR}",
+        str(PROTO),
+    ]
+)

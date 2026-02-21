@@ -8,13 +8,23 @@ message Ack {
 
 message NodeMetrics {
     string node_id = 1;
-    double cpu_util = 2;
-    double mem_util = 3;
-    double net_in_bytes = 4;
-    double net_out_bytes = 5;
-    double latency_ms = 6;
+
+    string host = 2;
+    int32 port = 3;
+
+    int64 timestamp_unix_ms = 4;
+
+    double cpu_util = 5;
+    double mem_util = 6;
+    double net_in_bytes = 7;
+    double net_out_bytes = 8;
+    double latency_ms = 9;
+}
+
+message NodeMetricsBatch {
+    repeated NodeMetrics items = 1;
 }
 
 service MetricsService {
-    rpc PushMetrics (NodeMetrics) returns (Ack);
+    rpc PushMetrics (NodeMetricsBatch) returns (Ack);
 }
