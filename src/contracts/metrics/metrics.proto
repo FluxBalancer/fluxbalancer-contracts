@@ -8,17 +8,11 @@ message Ack {
 
 message NodeMetrics {
     string node_id = 1;
-
-    string host = 2;
-    int32 port = 3;
-
-    int64 timestamp_unix_ms = 4;
-
-    double cpu_util = 5;
-    double mem_util = 6;
-    double net_in_bytes = 7;
-    double net_out_bytes = 8;
-    double latency_ms = 9;
+    int32 port = 2;
+    double cpu_util = 3;
+    double mem_util = 4;
+    double net_in_bytes = 5;
+    double net_out_bytes = 6;
 }
 
 service MetricsService {
